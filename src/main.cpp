@@ -5,11 +5,11 @@
 #include <sstream>
 
 std::string readFileFromPath(const std::string &path);
-std::vector<std::string> stringArray(std::string someString);
-void showVector(std::vector<std::string> text);
+std::vector<std::string> stringArray(std::string &someString);
+void showVector(std::vector<std::string> &text);
 void printPalindromes(std::vector<std::string> someArray);
-bool isPalindrome(const std::string word);
-std::vector<std::string> getPalindromeArray(std::vector<std::string> someArray);
+bool isPalindrome(const std::string &word);
+std::vector<std::string> getPalindromeArray(std::vector<std::string> &someArray);
 
 int main() {
   std::string rawString = readFileFromPath("prikol.txt");
@@ -32,7 +32,7 @@ std::string readFileFromPath(const std::string &path) {
   }
 }
 
-std::vector<std::string> stringArray(std::string someString) {
+std::vector<std::string> stringArray(std::string &someString) {
   std::vector<std::string> arr;
   std::string delimiter = "\n";
 
@@ -46,12 +46,12 @@ std::vector<std::string> stringArray(std::string someString) {
   return arr;
 }
 
-void showVector(std::vector<std::string> text) {
+void showVector(std::vector<std::string> &text) {
   for (std::string line : text)
     std::cout << line << std::endl;
 }
 
-std::vector<std::string> getPalindromeArray(std::vector<std::string> someArray) {
+std::vector<std::string> getPalindromeArray(std::vector<std::string> &someArray) {
   std::vector<std::string> palindromeArray;
   for (std::string line : someArray){
     if (isPalindrome(line)){
@@ -61,7 +61,7 @@ std::vector<std::string> getPalindromeArray(std::vector<std::string> someArray) 
   return palindromeArray;
 }
 
-bool isPalindrome(const std::string word){
+bool isPalindrome(const std::string &word){
   for (int i=0; i != word.length()/2; i++) {
     if (std::tolower(word[i]) != std::tolower(word[word.length()-i-1])) {
       return false;
